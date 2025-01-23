@@ -1,13 +1,5 @@
-import 'package:aplikasi_sato/screen/profile/pages/about/about.dart';
-import 'package:aplikasi_sato/screen/profile/pages/edit/edit.dart';
-import 'package:aplikasi_sato/screen/profile/pages/order/order.dart';
-import 'package:aplikasi_sato/screen/profile/pages/password/password.dart';
-import 'package:aplikasi_sato/screen/profile/pages/setting/setting.dart';
-import 'package:aplikasi_sato/screen/profile/pages/term/term.dart';
-import 'package:aplikasi_sato/screen/profile/pages/vehicle/vehicle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
-import '../../../../../../../../../themes.dart';
+import '../../models/themes.dart';
 
 class ProfilePage extends StatefulWidget {
   static const nameRoute = "/user";
@@ -20,385 +12,263 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    Widget konten() {
       return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 42),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Image.asset("assets/images/avatar.png"),
-                const SizedBox(
-                  width: 14,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      "Dyana Saputri",
-                      style: semiBoldText20.copyWith(color: black),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "(+62) 8561 552545",
-                      style: mediumText14.copyWith(color: greyColor),
-                    )
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 21,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(width: 1, color: greyColored),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset("assets/images/star2.png"),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        "159.000",
-                        style: mediumText16.copyWith(color: black),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Info',
-                        style: mediumText14.copyWith(color: greenColor),
-                      ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      SvgIcon(
-                        icon: const SvgIconData("assets/icons/arrow.svg"),
-                        size: 12,
-                        color: greenColor,
-                      )
-                    ],
-                  )
-                ],
+            const Center(
+              child: CircleAvatar(
+                radius: 40,
+                backgroundImage: AssetImage(
+                    "assets/images/logo.jpg"), // Ganti dengan logo Prodi
               ),
             ),
-            const SizedBox(
-              height: 21,
-            ),
-            Text(
-              "Akun",
-              style: mediumText16.copyWith(color: black),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Edit()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/edit.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Edit Profile",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Vehicle()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/car2.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Kendaraan Saya",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Order()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        SvgIcon(
-                          icon: const SvgIconData("assets/icons/pesanan.svg"),
-                          color: greenColor,
-                        ),
-                        const SizedBox(
-                          width: 13,
-                        ),
-                        Text(
-                          "Pesanan Saya",
-                          style: semiReguler16.copyWith(color: black),
-                        )
-                      ],
-                    ),
-                    Container(
-                      width: 12,
-                      height: 12,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: greenColor),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Order()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/riwayat.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Riwayat Pesanan",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Password()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/key.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Ganti Password",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Text(
-              "General",
-              style: mediumText16.copyWith(color: black),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 1, color: greyColored),
-                ),
-              ),
-              child: Row(
-                children: [
-                  SvgIcon(
-                    icon: const SvgIconData("assets/icons/faq.svg"),
-                    color: greenColor,
-                  ),
-                  const SizedBox(
-                    width: 13,
-                  ),
-                  Text(
-                    "FAQ",
-                    style: semiReguler16.copyWith(color: black),
-                  )
-                ],
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const About()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/about.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "About",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Term()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/term.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Term And Condition",
-                      style: semiReguler16.copyWith(color: black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Setting()));
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1, color: greyColored),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SvgIcon(
-                      icon: const SvgIconData("assets/icons/setting.svg"),
-                      color: greenColor,
-                    ),
-                    const SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Settings",
-                      style: semiReguler16.copyWith(color: black),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const SizedBox(height: 16),
             Center(
+              child: Text(
+                "Teknik Elektro", // Ganti dengan nama prodi yang sesuai
+                style: semiBoldText20.copyWith(color: black),
+              ),
+            ),
+            const SizedBox(height: 16),
+            // Deskripsi Prodi
+            Text(
+              "Teknik Elektro adalah bidang studi yang mempelajari dan menerapkan prinsip-prinsip ilmu kelistrikan, elektronik, dan elektromagnetisme untuk mendesain, menganalisis, serta mengembangkan sistem dan perangkat elektronik.",
+              style: mediumText15.copyWith(color: greyColor),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              "Visi",
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 8),
+            Text(
+                'Menjadi Program Studi yang Unggul dan Islami dalam Inovasi Teknologi Terapan Bidang Keteknikelektroan Tahun 2025',
+                style: mediumText15.copyWith(color: greyColor)),
+            const SizedBox(height: 8),
+            Text(
+              'Misi',
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 8),
+            RichText(
+              text: TextSpan(
+                style: mediumText15.copyWith(color: greyColor),
+                children: const <TextSpan>[
+                  TextSpan(
+                    text:
+                        '1. Menyelenggarakan program pendidikan berkualitas dengan mempraktikan kebiasaan berfikir ilmiah, bertindak ilmiah, dan berakhlakul karimah,\n',
+                  ),
+                  TextSpan(
+                    text:
+                        '2. Mengembangkan ilmu pengetahuan, teknologi dan seni keteknikelektroan untuk meningkatkan pelayanan pendidikan dan penelitian,\n',
+                  ),
+                  TextSpan(
+                    text:
+                        '3. Menguji, mengembangkan, menerapkan dan menyebarluaskan ilmu pengetahuan, teknologi dan seni keteknikelektroan dalam lingkup pemberdayaan masyarakat,\n',
+                  ),
+                  TextSpan(
+                    text:
+                        '4. Melaksanakan kerjasama kemitraan nasional dan internasional di bidang keteknikelektroan.',
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Fasilitas',
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.only(),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 16,
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/fasilitas1.jpg',
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Ruang Dosen',
+                                  style:
+                                      mediumText12.copyWith(color: greyColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10), // Jarak antar card
+                      Expanded(
+                        flex: 1,
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/fasilitas2.jpg',
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Instrumentasi dan Otomasi',
+                                  style:
+                                      mediumText12.copyWith(color: greyColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "Log out",
-                    style: mediumText18.copyWith(color: redColor),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/fasilitas3.jpg',
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Sistem Tenaga Listrik',
+                                  style:
+                                      mediumText12.copyWith(color: greyColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10), // Jarak antar card
+                      Expanded(
+                        flex: 1,
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/fasilitas4.jpg',
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Ilmu dasar dan Teknik Elektro',
+                                  style:
+                                      mediumText12.copyWith(color: greyColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 16,
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width *
+                            0.45, // Lebar card 45% dari layar
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/fasilitas5.jpg',
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: double.infinity,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Laboratorium Fisika Dasar',
+                                  style:
+                                      mediumText12.copyWith(color: greyColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "Versi aplikasi 2.3.4",
-                    style: semiReguler14.copyWith(color: greyColor),
-                  )
                 ],
               ),
             )
@@ -410,40 +280,44 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: ListView(
         children: [
-          Stack(children: [
-            Container(
-              width: double.infinity,
-              height: 102,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/header.png"),
-                  fit: BoxFit.cover,
+          Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 102,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/header.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    "Profil Prodi",
+                    style: semiBoldText16.copyWith(color: whiteColor),
+                  ),
+                ]),
               ),
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  "Profil Saya",
-                  style: semiBoldText16.copyWith(color: whiteColor),
-                ),
-              ]),
-            ),
-            Positioned(
+              Positioned(
                 child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 17),
-              margin: const EdgeInsets.only(top: 84),
-              decoration: BoxDecoration(
-                  color: whiteColor,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              child: Column(
-                children: [header()],
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 17),
+                  margin: const EdgeInsets.only(top: 84),
+                  decoration: BoxDecoration(
+                    color: whiteColor,
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                  ),
+                  child: Column(
+                    children: [konten()],
+                  ),
+                ),
               ),
-            )),
-          ])
+            ],
+          ),
         ],
       ),
     );

@@ -1,14 +1,14 @@
-import 'package:aplikasi_sato/screen/home/home_page.dart';
-import 'package:aplikasi_sato/screen/profile/profile_page.dart';
-import 'package:aplikasi_sato/screen/promo/promo_page.dart';
-import 'package:aplikasi_sato/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
-import 'outlet/outlet_page.dart';
+import '../models/themes.dart';
+import 'home/home_page.dart';
+import 'academic/academic_page.dart';
+import 'profile/profile_page.dart';
+import 'dosen/dosen_page.dart';
 
 class BottomNavBar extends StatefulWidget {
-  static const nameRoute = "/";
+  static const nameRoute = "/bottomNavbar";
   const BottomNavBar({super.key});
 
   @override
@@ -16,9 +16,14 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
-  final _screen = const [HomePage(), OutletPage(), PromoPage(), ProfilePage()];
+  final _screen = const [
+    HomePage(),
+    AcademicPage(),
+    DosenPage(),
+    ProfilePage()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +47,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         Container(
                           padding: const EdgeInsets.all(6.576),
                           decoration: BoxDecoration(
-                            color:
-                                _selectedIndex == 0 ? greenColored : tranparent,
+                            color: _selectedIndex == 0 ? blueNight : tranparent,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: SvgIcon(
                             icon: const SvgIconData("assets/icons/home.svg"),
                             size: 26.3,
-                            color: _selectedIndex == 0 ? greenColor : greyColor,
+                            color: _selectedIndex == 0 ? blueDark : greyColor,
                           ),
                         ),
                         Text("Home",
                             style: TextStyle(
-                                color: _selectedIndex == 0
-                                    ? greenColor
-                                    : greyColor,
+                                color:
+                                    _selectedIndex == 0 ? blueDark : greyColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12))
                       ],
@@ -70,21 +73,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         Container(
                           padding: const EdgeInsets.all(6.576),
                           decoration: BoxDecoration(
-                            color:
-                                _selectedIndex == 1 ? greenColored : tranparent,
+                            color: _selectedIndex == 1 ? blueNight : tranparent,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: SvgIcon(
-                            icon: const SvgIconData("assets/icons/outlet.svg"),
+                            icon: const SvgIconData(
+                                "assets/icons/curriculum.svg"),
                             size: 26.3,
-                            color: _selectedIndex == 1 ? greenColor : greyColor,
+                            color: _selectedIndex == 1 ? blueDark : greyColor,
                           ),
                         ),
-                        Text("Outlet",
+                        Text("Akademik",
                             style: TextStyle(
-                                color: _selectedIndex == 1
-                                    ? greenColor
-                                    : greyColor,
+                                color:
+                                    _selectedIndex == 1 ? blueDark : greyColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12))
                       ],
@@ -98,21 +100,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         Container(
                           padding: const EdgeInsets.all(6.576),
                           decoration: BoxDecoration(
-                            color:
-                                _selectedIndex == 2 ? greenColored : tranparent,
+                            color: _selectedIndex == 2 ? blueNight : tranparent,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: SvgIcon(
-                            icon: const SvgIconData("assets/icons/promo.svg"),
+                            icon: const SvgIconData(
+                                "assets/icons/dosenstaff.svg"),
                             size: 26.3,
-                            color: _selectedIndex == 2 ? greenColor : greyColor,
+                            color: _selectedIndex == 2 ? blueDark : greyColor,
                           ),
                         ),
-                        Text("Promo",
+                        Text("Dosen-Staff",
                             style: TextStyle(
-                                color: _selectedIndex == 2
-                                    ? greenColor
-                                    : greyColor,
+                                color:
+                                    _selectedIndex == 2 ? blueDark : greyColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12))
                       ],
@@ -126,21 +127,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         Container(
                           padding: const EdgeInsets.all(6.576),
                           decoration: BoxDecoration(
-                            color:
-                                _selectedIndex == 3 ? greenColored : tranparent,
+                            color: _selectedIndex == 3 ? blueNight : tranparent,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: SvgIcon(
-                            icon: const SvgIconData("assets/icons/profile.svg"),
+                            icon: const SvgIconData("assets/icons/campus.svg"),
                             size: 26.3,
-                            color: _selectedIndex == 3 ? greenColor : greyColor,
+                            color: _selectedIndex == 3 ? blueDark : greyColor,
                           ),
                         ),
-                        Text("Profile",
+                        Text("Profil",
                             style: TextStyle(
-                                color: _selectedIndex == 3
-                                    ? greenColor
-                                    : greyColor,
+                                color:
+                                    _selectedIndex == 3 ? blueDark : greyColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12))
                       ],

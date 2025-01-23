@@ -1,11 +1,9 @@
-import 'package:aplikasi_sato/screen/home/pages/notification/notification.dart';
-import 'package:aplikasi_sato/screen/home/pages/search/search.dart';
 import 'package:flutter/material.dart';
-import 'package:aplikasi_sato/themes.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'component/data_card.dart';
-import 'component/card_list.dart';
+import 'package:teknik_elektro/screen/home/pages/detail_page.dart';
+import '../../models/activity.dart';
+import '../../models/themes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   static const nameRoute = "/homePage";
@@ -16,16 +14,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> _categories = ["All", "Terdekat", "Rating Tertinggi"];
-
-  int _isSelected = 0;
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Stack(
         children: [
           Container(
-            height: 228,
+            height: 180,
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/header.png"),
@@ -42,85 +37,20 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Selamat Malam',
-                            style: mediumText16.copyWith(color: whiteColor),
+                            'Teknik Elektro',
+                            style: mediumText21.copyWith(color: whiteColor),
                           ),
-                          Text('Dyana Saputry',
-                              style:
-                                  semiBoldText14.copyWith(color: whiteColor)),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0), // Atur margin atas
+                            child: Text(
+                              'Universitas Ibnu Khaldun Bogor',
+                              style: semiBoldText14.copyWith(color: whiteColor),
+                            ),
+                          ),
                         ],
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Notif()));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Stack(
-                            children: [
-                              SvgIcon(
-                                icon:
-                                    const SvgIconData("assets/icons/bell.svg"),
-                                color: whiteColor,
-                                size: 32,
-                              ),
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: Container(
-                                  margin:
-                                      const EdgeInsets.only(top: 5, right: 5),
-                                  height: 10,
-                                  width: 10,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: whiteColor,
-                                        width: 1.0,
-                                        style: BorderStyle.solid,
-                                      ),
-                                      color: Colors.red,
-                                      shape: BoxShape.circle),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
                     ],
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Search()));
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 29),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 13, horizontal: 14),
-                      decoration: BoxDecoration(
-                          color: whiteTransparent,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.search,
-                            color: whiteColor,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            "Cari Disini",
-                            style: semiReguler14.copyWith(color: whiteColor),
-                          )
-                        ],
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -128,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Positioned(
               child: Container(
-            margin: const EdgeInsets.only(top: 205, left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 150, left: 16, right: 16),
             width: double.infinity,
             height: 60,
             decoration: BoxDecoration(
@@ -157,7 +87,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     children: [
-                      Image.asset("assets/images/star.png"),
+                      Image.asset(
+                        "assets/images/star2.png",
+                        width: 30,
+                        height: 30,
+                      ),
                       Container(
                         width: 110,
                         decoration: BoxDecoration(color: whiteColor),
@@ -166,13 +100,12 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Point Saya",
+                              Text("Akreditasi",
                                   style:
                                       mediumText10.copyWith(color: greyColor)),
                               Text(
-                                "100.000",
-                                style:
-                                    semiBoldText16.copyWith(color: greenColor),
+                                "Baik Sekali",
+                                style: semiBoldText16.copyWith(color: blueDark),
                               )
                             ],
                           ),
@@ -188,13 +121,13 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Row(
                         children: [
-                          Image.asset("assets/images/discon.png"),
+                          Image.asset("assets/images/avatar.png"),
                           Padding(
                             padding: const EdgeInsets.only(left: 12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Voucher",
+                                Text("Mahasiswa TE",
                                     style: mediumText10.copyWith(
                                         color: greyColor)),
                                 const SizedBox(
@@ -203,21 +136,21 @@ class _HomePageState extends State<HomePage> {
                                 Row(
                                   children: [
                                     Text(
-                                      "15",
+                                      "298",
                                       style:
                                           semiBoldText16.copyWith(color: black),
                                     ),
                                     Container(
                                       margin: const EdgeInsets.only(left: 4),
                                       decoration: BoxDecoration(
-                                          color: greenColor,
+                                          color: blueDark,
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 6, vertical: 2),
                                         child: Text(
-                                          "Voucher Baru",
+                                          "Aktif",
                                           style: semiReguler8.copyWith(
                                               color: whiteColor),
                                         ),
@@ -240,129 +173,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget category() {
-      return Column(
-        children: [
-          Container(
-            margin:
-                const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 12),
-            child: Row(
-              children: [
-                Text(
-                  "Kategori Layanan",
-                  style: boldText16.copyWith(color: black),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      SvgPicture.asset("assets/icons/car.svg"),
-                      Text(
-                        "Carwars",
-                        style: mediumText14.copyWith(color: black),
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      SvgPicture.asset("assets/icons/vespa.svg"),
-                      Text("Spotwash",
-                          style: mediumText14.copyWith(color: black))
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      SvgPicture.asset("assets/icons/magic.svg"),
-                      Text("Detailing",
-                          style: mediumText14.copyWith(color: black))
-                    ],
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      );
-    }
-
-    Widget warn() {
-      return Container(
-          margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
-          width: double.infinity,
-          height: 122,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: whiteColor,
-            border: Border.all(
-              color: greenColor,
-              width: 1,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 4, top: 2),
-                          child: Icon(
-                            Icons.circle,
-                            size: 12,
-                            color: redColor,
-                          ),
-                        ),
-                        Text(
-                          'Silahkan Konfirmasi order datang ke outlet',
-                          style: mediumText14.copyWith(color: redColor),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "20:56",
-                      style: boldText16.copyWith(color: greenColor),
-                    )
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      "Carwash Park Paramount Gading Serpong",
-                      style: mediumText16.copyWith(color: black),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      "Cuci Robotic Reguler",
-                      style: mediumText14.copyWith(color: greyColor),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ));
-    }
-
-    Widget promo() {
+    Widget kegitan() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -373,12 +184,8 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Promo Terbaru",
+                  "Kegiatan",
                   style: boldText16.copyWith(color: black),
-                ),
-                Text(
-                  "Lihat ainnya",
-                  style: mediumText14.copyWith(color: greenColor),
                 )
               ],
             ),
@@ -386,108 +193,186 @@ class _HomePageState extends State<HomePage> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 4),
-                      child: Image.asset("assets/images/banner1.png"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4),
-                      child: Image.asset("assets/images/banner2.png"),
-                    )
-                  ],
-                ),
-              ],
+            child: Row(
+              children: imageMap.entries.map((entry) {
+                String key = entry.key;
+                String image = entry.value;
+                String description =
+                    descriptionMap[key] ?? "Deskripsi tidak tersedia";
+                String time = timeMap[key] ?? "Time tidak ada";
+
+                return GestureDetector(
+                    onTap: () {
+                      // Navigasi ke halaman kedua dengan animasi
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(
+                              image: image,
+                              description: description,
+                              time: time,
+                              tag: 'hero-tag-$key'),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Column(
+                          children: [
+                            Hero(
+                                tag: 'hero-tag-$key',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(6),
+                                  child: Image.asset(
+                                    image,
+                                    width: 327,
+                                    height: 139,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ],
+                        )));
+              }).toList(),
             ),
-          )
+          ),
         ],
       );
     }
 
-    Widget outlet() {
+    Widget tentang() {
       return Container(
         margin: const EdgeInsets.only(top: 30, left: 16, right: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              "Tentang dan Sejarah",
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "Universitas Ibn Khaldun Bogor (UIKA) berdiri pada 1961 setelah pengelolaan fakultas di Jakarta dan Bogor dialihkan ke Yayasan Ibn Khaldun Bogor. Fakultas Teknik UIKA, berdiri sejak 1974, berganti nama menjadi Fakultas Teknik dan Sains (FTS-UIKA) pada 2018. FTS-UIKA memiliki 7 program studi, termasuk Teknik Elektro, yang mempelajari listrik, energi, dan teknologi elektronik, serta bermitra dengan FPTTE untuk pembaruan ilmu pengetahuan.",
+              style: mediumText15.copyWith(color: greyColor),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Future<void> _launchURL(String url) async {
+      final Uri uri = Uri.parse(url);
+      try {
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri);
+        } else {
+          throw 'Could not launch $url';
+        }
+      } catch (e) {
+        print('Error launching URL: $e');
+      }
+    }
+
+    Widget kontak() {
+      return Container(
+        margin: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16),
+            Text(
+              "Kontak Kami",
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 10),
             Row(
               children: [
-                Text(
-                  "Outlet Terdekat Berdasarkan",
-                  style: boldText16.copyWith(color: black),
+                Icon(Icons.phone, color: Colors.grey, size: 20),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text("0812-9057-9964",
+                      style: mediumText14.copyWith(color: greyColor)),
                 ),
               ],
-            )
-          ],
-        ),
-      );
-    }
-
-    Widget categories(int index) {
-      return InkWell(
-        onTap: () {
-          setState(() {
-            _isSelected = index;
-          });
-        },
-        child: Container(
-          margin: const EdgeInsets.only(right: 8),
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          decoration: BoxDecoration(
-            color: _isSelected == index ? greenColor : whiteColor,
-            border: _isSelected == index
-                ? Border.all(width: 0, color: Colors.transparent)
-                : Border.all(width: 1, color: greyColored),
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: Text(
-            _categories[index],
-            style: TextStyle(
-              color: _isSelected == index ? whiteColor : black,
             ),
-          ),
-        ),
-      );
-    }
-
-    Widget listCategories() {
-      return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: _categories
-                    .asMap()
-                    .entries
-                    .map((MapEntry map) => categories(map.key))
-                    .toList(),
-              ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey,
+                  size: 20,
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    "ft@uika-bogor.ac.id",
+                    style: mediumText14.copyWith(color: greyColor),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                const Icon(
+                  Icons.location_on,
+                  color: Colors.grey,
+                  size: 20,
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                      "Jl. Sholeh Iskandar, Kedungbadak,Tanah Sereal, Kota Bogor, Jawa Barat",
+                      style: mediumText14.copyWith(color: greyColor)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Text(
+              "Ikuti Kami di Media Sosial:",
+              style: boldText16.copyWith(color: black),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    _launchURL("https://www.facebook.com/psteuika");
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/icons/facebook.svg",
+                    color: Colors.blue,
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _launchURL("https://www.instagram.com/elektrouika/");
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/icons/instagram.svg",
+                    color: Colors.pink,
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _launchURL(
+                        "https://www.youtube.com/@teknikelektrouikabogor33");
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/icons/youtube.svg",
+                    color: Colors.red,
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-      );
-    }
-
-    Widget listCard() {
-      return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
-        child: Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          spacing: 10.0,
-          runSpacing: 10.0,
-          children: cardList
-              .asMap()
-              .entries
-              .map((MapEntry map) => CardLists(info: cardList[map.key]))
-              .toList(),
         ),
       );
     }
@@ -501,12 +386,9 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 header(),
-                category(),
-                warn(),
-                promo(),
-                outlet(),
-                listCategories(),
-                listCard(),
+                tentang(),
+                kegitan(),
+                kontak(),
               ],
             )
           ],
